@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.17)
-project(gltest)
+project(myshader)
 
 set(CMAKE_CXX_STANDARD 14)
 
@@ -17,11 +17,11 @@ set(GLFW_LINK /usr/local/Cellar/glfw/3.3.2/lib/libglfw.3.dylib)
 link_libraries(${OPENGL} ${GLEW_LINK} ${GLFW_LINK})
 
 # 执行编译命令
-set(SOURCE_FILES main.cpp)
-add_executable(gltest ${SOURCE_FILES})
+set(SOURCE_FILES main.cpp shader.h shader.cpp)
+add_executable(myshader ${SOURCE_FILES} src/glad.c)
 
 # mac下这步很重要
 if (APPLE)
-    target_link_libraries(gltest "-framework OpenGL")
-    target_link_libraries(gltest "-framework GLUT")
+    target_link_libraries(myshader "-framework OpenGL")
+    target_link_libraries(myshader "-framework GLUT")
 endif()
